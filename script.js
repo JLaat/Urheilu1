@@ -15,27 +15,44 @@ class Urheilija extends Henkilo {
     syntymavuosi,
     linkkiKuvaan,
     omapaino,
-    laji,
-    saavutukset
+    urheilulaji,
+    urheiluSaavutukset
   ) {
     super(etunimet, sukunimi, kutsumanimi, syntymavuosi);
     this.linkkiKuvaan = linkkiKuvaan;
     this.omapaino = omapaino;
-    this.laji = laji;
-    this.saavutukset = saavutukset;
+    this.urheilulaji = urheilulaji;
+    this.urheiluSaavutukset = urheiluSaavutukset;
+  }
+
+  get kokonimi() {
+    return `${this.etunimet} ${this.sukunimi}`;
   }
   get saavutukset() {
-    return this.saavutukset;
+    return this.urheiluSaavutukset;
   }
   set saavutukset(saavutukset) {
-    this.saavutukset = saavutukset;
+    this.urheiluSaavutukset = saavutukset;
   }
   get laji() {
-    return this.laji;
+    return this.urheilulaji;
   }
   set laji(laji) {
-    this.laji = laji;
+    this.urheilulaji = laji;
   }
 }
 
-Henkilo Jorma = new Henkilo("");
+const seppoRaty = new Urheilija(
+  "Seppo Henrik",
+  "Räty",
+  "Seppo",
+  1962,
+  "https://seura.fi/wp-content/uploads/2012/12/Sepporaty1s_548.jpg",
+  102,
+  "Keihäänheitto",
+  "MM-tulokset: kultaa 1987, hopeaa 1991. Olympia-tulokset: hopeaa 1992, pronssia 1988 ja 1996"
+);
+
+console.log(
+  `${seppoRaty.kokonimi}, ${seppoRaty.laji}, ${seppoRaty.saavutukset}`
+);
